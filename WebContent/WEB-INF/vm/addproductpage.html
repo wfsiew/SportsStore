@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Admin: Add New Product</title>
+<link rel="Stylesheet" type="text/css" href="#springUrl("/resources/css/admin.css")" />
+<link rel="Stylesheet" type="text/css" href="#springUrl("/resources/css/site.css")" />
+</head>
+<body>
+	<h1>Add New Product</h1>
+	
+	<form action="#springUrl("/productadmin/create")" method="post" enctype="multipart/form-data">
+		<label class="editor-label">Name</label>
+		<br />
+		#springFormInput("productAttribute.name" 'class="text-box"')
+		<br />
+        #springShowErrors("<br>" "form_error")
+		<br />
+		<label class="editor-label">Description</label>
+		<br />
+		#springFormTextarea("productAttribute.description" 'class="text-box multi-line"')
+		<br />
+        #springShowErrors("<br>" "form_error")
+		<br />
+		<label class="editor-label">Price</label>
+		<br />
+		#springFormInput("productAttribute.price" 'class="text-box"')
+		<br />
+		#springShowErrors("<br>" "form_error")
+		<br />
+		<label class="editor-label">Category</label>
+		<br />
+		#springFormInput("productAttribute.category" 'class="text-box"')
+		<br />
+		#springShowErrors("<br>" "form_error")
+		<div class="editor-label">Image</div>
+		<div class="editor-field">
+			#if ($productAttribute.imageData)
+				<img width="150" height="150" src="#springUrl("/productadmin/getimage/$productAttribute.productID")" />
+			#end
+		</div>
+		
+		#springBind("productAttribute.fileData")
+		<div>Upload new image: <input name="fileData" type="file" value="$!status.value" /></div>
+
+		<input type="submit" value="Save" />
+		<a href="#springUrl("/productadmin")">Cancel and return to List</a>
+	</form>
+</body>
+</html>

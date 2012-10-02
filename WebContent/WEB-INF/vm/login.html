@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Admin: Log In</title>
+<link rel="Stylesheet" type="text/css" href="#springUrl("/resources/css/admin.css")" />
+</head>
+<body>
+	<h1>Log In</h1>
+
+	<p>Please log in to access the administrative area:</p>
+	
+	#if ($error)
+		<div class="errorblock">$errormsg</div>
+	#end
+	
+	<form name="f" action="#springUrl("/j_spring_security_check")" method="post">
+		<label class="editor-label">UserName</label>
+		<br />
+		<input type="text" name="j_username" class="text-box" />
+		<br />
+		<label class="editor-label">Password</label>
+		<br />
+		<input type="password" name="j_password" class="text-box" />
+		<br />
+		<p>
+			<input name="submit" type="submit" value="Log In" />
+		</p>
+    </form>
+</body>
+</html>

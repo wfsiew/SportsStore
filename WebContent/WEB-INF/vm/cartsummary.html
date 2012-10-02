@@ -1,0 +1,9 @@
+#macro(currency $amount)${formatter.currency($amount)}#end
+<div id="cart">
+	<span class="caption">
+		<b>Your cart:</b>
+		$cart.getTotalQuantity() item(s),
+		#currency($cart.computeTotalValue())
+	</span>
+	<a href="#springUrl("/cart/checkout")">Checkout</a>
+</div>

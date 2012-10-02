@@ -1,0 +1,57 @@
+#macro(currency $amount)${formatter.currency($amount)}#end
+#macro(loc $s)${rb.getString($s)}#end
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Order Confirmation</title>
+</head>
+<body>
+	<h3>#loc("order.msg")</h3>
+	<hr>
+	<h3>#loc("order.items")</h3>
+	<table>
+		<thead>
+			<tr>
+				<th>#loc("cartline.item")</th>
+				<th>#loc("cartline.price")</th>
+				<th>#loc("cartline.quantity")</th>
+				<th>#loc("cartline.subtotal") (#loc("currency.code"))</th>
+			</tr>
+		</thead>
+		<tbody>
+		#foreach ($c in $cart.lines)
+		#set ($subtotal = $c.product.price * $c.quantity)
+			<tr>
+				<td>$c.product.name</td>
+				<td>$c.product.price</td>
+				<td>$c.quantity</td>
+				<td>$subtotal</td>
+			</tr>
+		#end
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="3" align="right">#loc("order.total")</td>
+				<td>#currency($cart.computeTotalValue())</td>
+			</tr>
+		</tfoot>
+	</table>
+	<hr>
+	<h3>#loc("order.shipto")</h3>
+	$shinfo.name<br>
+	$shinfo.line1<br>
+	$shinfo.line2<br>
+	$shinfo.line3<br>
+	$shinfo.city<br>
+	$shinfo.state<br>
+	$shinfo.country<br>
+	$shinfo.zip<br>
+	<hr>
+	#if ($shinfo.isGiftwrap())
+	#loc("order.giftwrap") #loc("yes")
+	#else
+	#loc("order.giftwrap") #loc("no")
+	#end
+</body>
+</html>

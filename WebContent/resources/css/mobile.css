@@ -1,0 +1,27 @@
+DIV.item H3 {
+	font-size: .8em;
+	margin: 0 0 .25em 0;
+}
+
+DIV.item H4 {
+	font-size: .8em;
+	margin: .4em 0 0 0;
+}
+
+FORM {
+	margin: 0;
+	padding: 0;
+}
+
+DIV.item FORM {
+	float: right;
+}
+
+DIV#cart {
+	padding: .5em .5em .5em 1em;
+}
+
+.form_error {
+	color: #D8000C;
+	background-color: #FFBABA;
+}

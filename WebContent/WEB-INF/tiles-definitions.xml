@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+       
+<tiles-definitions>
+
+	<definition name="template-main" template="/WEB-INF/jsp/layouts/productmain.jsp">
+		<put-attribute name="header" value="/WEB-INF/jsp/cartsummary.jsp" />
+		<put-attribute name="title" value="" />
+		<put-attribute name="header-title" value="" />
+		<put-attribute name="categories" value="/WEB-INF/jsp/productmenu.jsp" />
+		<put-attribute name="content" value="" />
+	</definition>
+	
+	<definition name="template-productspage" extends="template-main">
+		<put-attribute name="content" value="/WEB-INF/jsp/productsummary.jsp" />
+	</definition>
+	
+	<definition name="template-cartpage" extends="template-main">
+		<put-attribute name="content" value="/WEB-INF/jsp/cartline.jsp" />
+	</definition>
+	
+	<definition name="template-checkoutpage" extends="template-main">
+		<put-attribute name="content" value="/WEB-INF/jsp/checkout.jsp" />
+	</definition>
+	
+	<definition name="template-checkoutcomplete" extends="template-main">
+		<put-attribute name="content" value="/WEB-INF/jsp/checkoutcontent.jsp" />
+	</definition>
+	
+	<definition name="product-save-form" template="/WEB-INF/jsp/layouts/productform.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="heading" value="" />
+		<put-attribute name="saveurl" value="" />
+	</definition>
+
+</tiles-definitions>

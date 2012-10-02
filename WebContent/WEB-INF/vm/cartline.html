@@ -1,0 +1,43 @@
+#macro(currency $amount)${formatter.currency($amount)}#end
+<h2>Your cart</h2>
+<table width="90%" align="center">
+	<thead>
+		<tr>
+			<th align="center">Quantity</th>
+			<th align="left">Item</th>
+			<th align="right">Price</th>
+			<th align="right">Subtotal</th>
+		</tr>
+	</thead>
+	<tbody>
+		#foreach ($line in $cart.getLines())
+			<tr>
+				<td align="center">$line.quantity</td>
+				<td align="left">$line.product.name</td>
+				<td align="right">#currency($line.product.price)</td>
+				<td align="right">
+					#set ($amt = $line.quantity * $line.product.price)
+					#currency($amt)
+				</td>
+				<td>
+					<form action="#springUrl("/cart/remove/$line.product.productID")" method="post">
+						<input id="returnUrl" name="returnUrl" type="hidden" value="$returnUrl" />
+						<input type="submit" value="Remove" class="actionButtons" />
+					</form:form>
+				</td>
+			</tr>
+		#end
+    </tbody>
+	<tfoot>
+		<tr>
+			<td colspan="3" align="right">Total:</td>
+			<td align="right">
+				#currency($cart.computeTotalValue())
+			</td>
+		</tr>
+    </tfoot>
+</table>
+<p align="center" class="actionButtons">
+	<a href="$returnUrl">Continue shopping</a>
+	<a href="#springUrl("/cart/checkout")">Checkout now</a>
+</p>

@@ -1,0 +1,12 @@
+<a href="#springUrl("/product")">Home</a>
+#foreach ($c in $categories)
+	#if (!$selectedCategory)
+		<a href="#springUrl("/product/$c")">$c</a>
+	
+	#elseif ($c.equalsIgnoreCase($selectedCategory))
+        <a href="#springUrl("/product/$c")" class="selected">$c</a>
+		
+	#else
+        <a href="#springUrl("/product/$c")">$c</a>
+	#end
+#end

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Sports Store: Your Cart</title>
+<link rel="Stylesheet" type="text/css" href="#springUrl("/resources/css/site.css")" />
+</head>
+<body>
+	<div id="header">
+		#parse("/WEB-INF/vm/cartsummary.html")
+		<div class="title">SPORTS STORE</div>
+	</div>
+	<div id="categories">
+		#parse("/WEB-INF/vm/productmenu.html")
+	</div>
+	<div id="content">
+		#parse("/WEB-INF/vm/cartline.html")
+	</div>
+</body>
+</html>

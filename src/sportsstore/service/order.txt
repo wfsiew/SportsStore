@@ -1,0 +1,30 @@
+#macro(currency $amount)${formatter.currency($amount)}#end
+#macro(loc $s)${rb.getString($s)}#end
+#loc("order.msg")
+
+---
+#loc("order.items")
+
+#foreach ($c in $cart.lines)
+#set ($subtotal = $c.product.price * $c.quantity)
+$c.quantity x $c.product.name (#loc("order.subtotal") #currency($subtotal))
+#end
+#loc("order.total") #currency($cart.computeTotalValue())
+
+---
+#loc("order.shipto")
+
+$shinfo.name
+$shinfo.line1
+$shinfo.line2
+$shinfo.line3
+$shinfo.city
+$shinfo.state
+$shinfo.country
+$shinfo.zip
+---
+#if ($shinfo.isGiftwrap())
+#loc("order.giftwrap") #loc("yes")
+#else
+#loc("order.giftwrap") #loc("no")
+#end

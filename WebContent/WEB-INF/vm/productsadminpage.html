@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Admin: All Products</title>
+<link rel="Stylesheet" type="text/css" href="#springUrl("/resources/css/admin.css")" />
+</head>
+<body>
+	#macro(currency $amount)${formatter.currency($amount)}#end
+	#if ($message)
+		<div class="Message">$message</div>
+	#end
+	<h1>All Products</h1>
+	<table class="Grid">
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th class="NumericCol">Price</th>
+			<th>Actions</th>
+		</tr>
+		#foreach ($p in $products)
+			<tr>
+    			<td>$p.productID</td>
+    			<td><a href="#springUrl("/productadmin/edit/$p.productID")">$p.name</a></td>
+    			<td class="NumericCol">
+    				#currency($p.price)
+    			</td>
+    			<td><a href="#springUrl("/productadmin/delete/$p.productID")">Delete</a></td>
+    		</tr>
+		#end
+    </table>
+	<p>
+		<a href="#springUrl("/productadmin/create")">Add a new product</a>
+		<a href="#springUrl("/j_spring_security_logout")">Log Out</a>
+	</p>
+</body>
+</html>

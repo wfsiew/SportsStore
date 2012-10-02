@@ -1,0 +1,44 @@
+<h2>Check out now</h2>
+Please enter your details, and we'll ship your goods right away!
+#if ($cartempty)
+	<p class="form_error">$cartempty</p>
+#end
+<form action="#springUrl("/cart/checkout")" method="post">
+	<h3>Ship to</h3>
+	<div>Name:
+		#springFormInput("shippingDetailsAttribute.name" "")
+        #springShowErrors("<br>" "form_error")
+	</div>
+	
+	<h3>Address</h3>
+	<div>Line 1:
+		#springFormInput("shippingDetailsAttribute.line1" "")
+        #springShowErrors("<br>" "form_error")
+	</div>
+	<div>Line 2: #springFormInput("shippingDetailsAttribute.line2" "")</div>
+	<div>Line 3: #springFormInput("shippingDetailsAttribute.line3" "")</div>
+	<div>City:
+		#springFormInput("shippingDetailsAttribute.city" "")
+        #springShowErrors("<br>" "form_error")
+	</div>
+	<div>State:
+		#springFormInput("shippingDetailsAttribute.state" "")
+        #springShowErrors("<br>" "form_error")
+	</div>
+	<div>Zip: #springFormInput("shippingDetailsAttribute.zip" "")</div>
+	<div>Country: 
+		#springFormInput("shippingDetailsAttribute.country" "")
+        #springShowErrors("<br>" "form_error")
+	</div>
+	
+	<h3>Options</h3>
+	<label>
+		#springBind("shippingDetailsAttribute.giftwrap")
+		<input name="giftwrap" type="checkbox"  value="true" />
+		<label>Gift wrap these items</label>
+	</label>
+	
+	<p align="center">
+		<input type="submit" value="Complete order" class="actionButtons" />
+	</p>
+</form>
